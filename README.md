@@ -1,4 +1,4 @@
-justhostwww
+personal site
 ===========
 
-My current site hosted on justhost: www.brockdonovan.com
+My current site: www.brockdonovan.com
