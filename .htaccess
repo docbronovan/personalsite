@@ -3,3 +3,6 @@
 # Use PHP5 Single php.ini as default
 AddHandler application/x-httpd-php5s .php
 
+RewriteEngine On 
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://www.brockdonovan.com
