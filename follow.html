@@ -10,8 +10,10 @@
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,500italic,700italic" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800"
         rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/themes.css">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -134,10 +136,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a class="brand" href="index.html">Brock Donovan</a>
           <div class="nav">
             <ul class="nav">
-              <li><a href="datadaze.html">DataDaze</a></li>
               <li><a href="follow.html">Follow</a></li>
               <li><a href="resume.html">Resume</a></li>
-              <li><a href="travels.html">Travels</a></li>
+              <li class="dropdown theme-dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Theme <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="active" data-theme="default"><a href="#">Default</a></li>
+                  <li data-theme="geocities"><a href="#">Geocities</a></li>
+                  <li data-theme="flash"><a href="#">Flash Era</a></li>
+                </ul>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -151,8 +159,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="span12">
           <h3>Follow me</h3>
              <p><a href="http://www.linkedin.com/pub/brock-donovan/25/4a5/605/" target="_blank"> Linkedin </a></p>
-             <p><a href="http://twitter.com/docbronovan" target="_blank"> Twitter </a></p>
-             <p><a href="https://datadaze.blogspot.com/" target="_blank" > My Data Blog </a></p>
+             <p><a href="https://app.thestorygraph.com/profile/citizencanoe" target="_blank"> What I'm reading </a></p>
         </div>
         <div class="span10 offset1">
              
@@ -162,13 +169,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="row-fluid footer">
     <div class="span12" style="padding-top: 25%;">
       <div> </div>
-      <p>brockdonovan@gmail.com | <a href="http://twitter.com/docbronovan">@docbronovan</a>
+      <p>brockdonovan@gmail.com
       </div>
     </div>  
   </div>
 
+<script src="js/themes.js"></script>
 </body>
-</head>
 </html>
 
 

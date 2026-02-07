@@ -11,8 +11,10 @@
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,500italic,700italic" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800"
         rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/themes.css">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -144,6 +146,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <li><a href="follow.html">Follow</a></li>
               <li><a href="resume.html">Resume</a></li>
               <li><a href="travels.html">Travels</a></li>
+              <li class="dropdown theme-dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Theme <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="active" data-theme="default"><a href="#">Default</a></li>
+                  <li data-theme="geocities"><a href="#">Geocities</a></li>
+                  <li data-theme="flash"><a href="#">Flash Era</a></li>
+                </ul>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -184,8 +194,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>  
   </div>
 
+<script src="js/themes.js"></script>
 </body>
-</head>
 </html>
 
 

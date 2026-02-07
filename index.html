@@ -3,14 +3,8 @@
   <head>
     <script src="//cdn.optimizely.com/js/323516828.js"></script>
     <meta charset="utf-8">
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@docbronovan" />
-    <meta name="twitter:title" content="Come see what I've been up to." />
 
-    <meta name="twitter:description" content="I live in Brooklyn. I work with data. I play some instruments." />
-
-    <meta name="twitter:image" content="http://brockdonovan.com/img/city.jpg" />
-    <meta name="twitter:url" content="http://www.brockdonovan.com/" />
+    <meta name="description" content="I live in the Bay. I work with data. I play some instruments." />
 
     <title>Brock Donovan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,8 +21,10 @@
     })(window,document,'script','dataLayer','GTM-KGMDBJ');</script>
     <!-- End Google Tag Manager -->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,500italic,700italic" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800"
         rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/themes.css">
     <style type="text/css">
     /* Large Desktop */
     @media (min-width:980px) {
@@ -42,7 +38,7 @@
         border-left: 1px white solid;
       }
     }
-    
+
     /* Landscape phones and down*/
     @media (max-width:480px) {
       .copy {
@@ -57,7 +53,7 @@
     }
 
     /* All form factors*/
-    
+
     /* Main body and headings*/
     body {
       font-family: 'Open Sans', helvetica, Arial, sans-serif;
@@ -93,7 +89,7 @@
     .statistics h3, .statistics p {
       color: white;
     }
-    
+
     /* Marketing Copy and Footer*/
     .copy {
       padding-top: 2.5%;
@@ -114,6 +110,7 @@
     .footer a {
       color: #ccccff;
     }
+
   </style>
 
   <script>
@@ -134,7 +131,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <!-- Mobile-friendly navbar adapted from example. -->
 <!-- http://twitter.github.io/bootstrap/examples/starter-template.html-->
-  
+
   <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -146,10 +143,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a class="brand" href="index.html">Brock Donovan</a>
           <div class="nav">
             <ul class="nav">
-              <li><a href="datadaze.html">DataDaze</a></li>
               <li><a href="follow.html">Follow</a></li>
               <li><a href="resume.html">Resume</a></li>
-              <li><a href="travels.html">Travels</a></li>
+              <li class="dropdown theme-dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Theme <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="active" data-theme="default"><a href="#">Default</a></li>
+                  <li data-theme="geocities"><a href="#">Geocities</a></li>
+                  <li data-theme="flash"><a href="#">Flash Era</a></li>
+                </ul>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -163,76 +166,72 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <!-- WFont and paired font of .heading/.subheading and body from google fonts -->
       <!-- www.google.com/font/specimen/Ubuntu -->
-      <!-- www.google.com/fonts/specimen/Ubuntu#pairings --> 
+      <!-- www.google.com/fonts/specimen/Ubuntu#pairings -->
       <div class="row-flluid heading">
         <div class="span12">
-          <h3>Welcome, come see what I've been up to on my <a href="https://datadaze.blogspot.com">Data Blog</a>. As always feel free to <a href="mailto:brockdonovan@gmail.com">contact me.</a></h3>
+          <h3>I live in the Bay. I work with data. I play some instruments. As always feel free to <a href="mailto:brockdonovan@gmail.com">contact me.</a></h3>
         </div>
       </div>
       <div class="row-fluid subheading">
         <div class="span12">
           <!-- Special typography from bootstrap -->
           <!-- http://twitter.github.io/bootstrap/base-css.html#typography-->
-          
+
         </div>
       </div>
       <div class="row-fluid pitch">
         <div class="span12">
-          
-          <img class="img-polaroid" style="display: block; margin-left: auto; margin-right: auto; width: 70%;" src="city.jpg">
+
+          <img class="img-polaroid" style="display: block; margin-left: auto; margin-right: auto; width: 70%;" src="sf.jpg">
         </div>
 
         <!-- We define a new 'actions div to contain statistics, order, and share buttons'. -->
         <div class="row-fluid footer">
           <div class="span12">
-                <!-- linediv-l and linediv-r give dividing lines that lok 
-                different in horizontal and vertical layouts, illustrating 
+                <!-- linediv-l and linediv-r give dividing lines that lok
+                different in horizontal and vertical layouts, illustrating
                 media queries. -->
-                
+
                   <h4>
-                    I live in Brooklyn. I work with data. I play some instruments. 
+                    
                 </h4>
 
-                 <h5><a href="https://www.goodreads.com/review/list/8406387-brock-donovan?shelf=currently-reading" target="_blank"> What I'm reading </a></h5>
-                
-              
-                
+
+
               </div>
             </div>
           </div>
           <div class="span10 offset1">
-           
-             
+
+
               </div>
             </div>
-          
+
 
     <!-- Beyond this part the marketing copy begins -->
     <!-- https://developer.mozilla.org/en-US/docs/WEB/CSS/text-align -->
     <!-- http://twitter.github.io/bootstrap/base-css.html#images-->
     <!-- http://placehold.it-->
-   
+
 
     <!-- For the FAQ we introduce a little bit of JS, using the accordian -->
     <!-- This brings in jquery.js and bootstrap.js as dependencies-->
     <!-- http://twitter.github.io/bootstrap/javascript.html#collapse-->
-    
+
 
 <!-- Not crucial, but we put this under a CC by-SA 3.0 license. -->
 <!-- http://creativecommons.org/licenses/-->
   <div class="row-fluid footer">
     <div class="span12">
       <div> </div>
-      <p>brockdonovan@gmail.com | <a href="http://twitter.com/docbronovan">@docbronovan</a>
+      <p>brockdonovan@gmail.com
       </div>
-    </div>  
+    </div>
   </div>
 
-   
 
 
+
+<script src="js/themes.js"></script>
 </body>
-</head>
 </html>
-
-
