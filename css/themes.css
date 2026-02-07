@@ -1,0 +1,177 @@
+/* Theme dropdown styles */
+.theme-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.theme-dropdown .dropdown-toggle {
+  cursor: pointer;
+}
+.theme-dropdown .dropdown-menu {
+  min-width: 140px;
+}
+.theme-dropdown .dropdown-menu li a {
+  padding: 5px 15px;
+}
+.theme-dropdown .dropdown-menu li.active a {
+  background-color: #0088cc;
+  color: white;
+}
+
+/* ========== GEOCITIES THEME (90s) ========== */
+body.theme-geocities {
+  background: #000080 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="10" cy="10" r="1" fill="white"/><circle cx="50" cy="30" r="1.5" fill="yellow"/><circle cx="80" cy="60" r="1" fill="white"/><circle cx="30" cy="80" r="1" fill="white"/><circle cx="70" cy="90" r="1.5" fill="yellow"/><circle cx="90" cy="20" r="1" fill="white"/><circle cx="20" cy="50" r="1" fill="white"/></svg>');
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive !important;
+  color: #00ff00;
+}
+body.theme-geocities .navbar-inverse {
+  background: linear-gradient(to right, #ff00ff, #00ffff) !important;
+  border: 3px solid #ffff00 !important;
+}
+body.theme-geocities .navbar-inverse .brand,
+body.theme-geocities .navbar-inverse .nav > li > a {
+  color: #000000 !important;
+  text-shadow: 2px 2px #ff0000;
+  font-weight: bold !important;
+}
+body.theme-geocities .container {
+  background-color: #000080;
+  border: 5px dashed #ff00ff;
+  padding: 20px;
+}
+body.theme-geocities h3,
+body.theme-geocities h4,
+body.theme-geocities h5 {
+  color: #ffff00 !important;
+  text-shadow: 2px 2px #ff0000;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive !important;
+}
+body.theme-geocities p,
+body.theme-geocities li {
+  color: #00ff00 !important;
+}
+body.theme-geocities a {
+  color: #00ffff !important;
+  text-decoration: underline !important;
+}
+body.theme-geocities a:hover {
+  color: #ff00ff !important;
+  background-color: #ffff00 !important;
+}
+body.theme-geocities .img-polaroid,
+body.theme-geocities img {
+  border: 5px solid #ff00ff !important;
+  box-shadow: 5px 5px 0px #00ffff !important;
+}
+body.theme-geocities .footer {
+  color: #00ff00 !important;
+}
+body.theme-geocities .footer p {
+  color: #00ff00 !important;
+}
+body.theme-geocities::after {
+  content: "You are visitor #" attr(data-visitor) " - Best viewed in Netscape Navigator";
+  display: block;
+  text-align: center;
+  color: #ffff00;
+  font-size: 14px;
+  padding: 20px;
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+body.theme-geocities .heading h3::before {
+  content: "** ";
+  color: #ff00ff;
+}
+body.theme-geocities .heading h3::after {
+  content: " **";
+  color: #ff00ff;
+}
+
+/* ========== FLASH THEME (2000s) ========== */
+body.theme-flash {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+  font-family: 'Orbitron', sans-serif !important;
+  color: #ffffff;
+  min-height: 100vh;
+}
+body.theme-flash::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at top, rgba(100, 100, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(255, 100, 100, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+body.theme-flash .navbar-inverse {
+  background: linear-gradient(180deg, #2a2a3a 0%, #1a1a2a 50%, #0a0a1a 100%) !important;
+  border-bottom: 2px solid #4444ff !important;
+  box-shadow: 0 0 20px rgba(100, 100, 255, 0.5) !important;
+}
+body.theme-flash .navbar-inverse .brand,
+body.theme-flash .navbar-inverse .nav > li > a {
+  color: #aaaaff !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Orbitron', sans-serif !important;
+  transition: all 0.3s ease;
+}
+body.theme-flash .navbar-inverse .nav > li > a:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px #4444ff, 0 0 20px #4444ff;
+}
+body.theme-flash .container {
+  background: rgba(20, 20, 40, 0.8);
+  border: 1px solid rgba(100, 100, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(100, 100, 255, 0.2), inset 0 0 30px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+}
+body.theme-flash h3,
+body.theme-flash h4,
+body.theme-flash h5 {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(100, 100, 255, 0.8);
+  font-family: 'Orbitron', sans-serif !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+body.theme-flash p,
+body.theme-flash li {
+  color: #ccccdd !important;
+}
+body.theme-flash a {
+  color: #6666ff !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+body.theme-flash a:hover {
+  color: #aaaaff !important;
+  text-shadow: 0 0 10px #6666ff;
+}
+body.theme-flash .img-polaroid,
+body.theme-flash img {
+  border: 2px solid #4444ff !important;
+  box-shadow: 0 0 20px rgba(100, 100, 255, 0.5) !important;
+  border-radius: 5px;
+}
+body.theme-flash .footer {
+  color: #888899 !important;
+}
+body.theme-flash .footer p {
+  color: #888899 !important;
+}
+body.theme-flash .heading h3 {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 5px rgba(100, 100, 255, 0.5); }
+  to { text-shadow: 0 0 20px rgba(100, 100, 255, 0.8), 0 0 30px rgba(100, 100, 255, 0.6); }
+}

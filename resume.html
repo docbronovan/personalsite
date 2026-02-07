@@ -10,8 +10,10 @@
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,500italic,700italic" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800"
         rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/themes.css">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -65,19 +67,139 @@
       font-size: 18px;
       line-height: 24px;
     }
-    div.resume {
-      font-family: 'Ubuntu', helvetica, Arial, sans-serif;
-      text-align: left;
-      font-size: 12px;
-      padding-left: 10px;
-      padding-right: 10px;
+    /* Resume styles */
+    .resume-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      font-family: 'Open Sans', helvetica, Arial, sans-serif;
     }
-    div.resume-body {
+    .resume-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #333;
+    }
+    .resume-header h1 {
       font-family: 'Ubuntu', helvetica, Arial, sans-serif;
-      text-align: left;
+      font-size: 36px;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+    .resume-header .subtitle {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .resume-header .contact {
       font-size: 14px;
-      padding-left: 10px;
-      padding-right: 10px;
+      color: #666;
+    }
+    .resume-section {
+      margin-bottom: 25px;
+    }
+    .resume-section h2 {
+      font-family: 'Ubuntu', helvetica, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #333;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .job {
+      margin-bottom: 20px;
+    }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .job-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #222;
+    }
+    .job-company {
+      font-size: 16px;
+      font-weight: 600;
+      color: #444;
+    }
+    .job-date {
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
+    }
+    .job-location {
+      font-size: 14px;
+      color: #888;
+    }
+    .job-description {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #444;
+      margin-top: 8px;
+    }
+    .job ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+    .job li {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 5px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 8px 15px;
+      font-size: 15px;
+    }
+    .skills-grid dt {
+      font-weight: 600;
+      color: #333;
+    }
+    .skills-grid dd {
+      color: #444;
+      margin: 0;
+    }
+    .education-item {
+      margin-bottom: 15px;
+    }
+    .education-item .degree {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .education-item .school {
+      font-size: 15px;
+      color: #444;
+    }
+    .education-item .year {
+      font-size: 14px;
+      color: #666;
+    }
+    .download-links {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .download-links a {
+      margin: 0 10px;
+      font-size: 14px;
+    }
+    @media (max-width: 600px) {
+      .resume-container {
+        padding: 15px 20px;
+      }
+      .job-header {
+        flex-direction: column;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
 
@@ -149,125 +271,176 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a class="brand" href="index.html">Brock Donovan</a>
           <div class="nav">
             <ul class="nav">
-              <li><a href="datadaze.html">DataDaze</a></li>
               <li><a href="follow.html">Follow</a></li>
               <li><a href="resume.html">Resume</a></li>
-              <li><a href="travels.html">Travels</a></li>
+              <li class="dropdown theme-dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Theme <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="active" data-theme="default"><a href="#">Default</a></li>
+                  <li data-theme="geocities"><a href="#">Geocities</a></li>
+                  <li data-theme="flash"><a href="#">Flash Era</a></li>
+                </ul>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
-    <!-- WFont and paired font of .heading/.subheading and body from google fonts -->
-      <!-- www.google.com/font/specimen/Ubuntu -->
-      <!-- www.google.com/fonts/specimen/Ubuntu#pairings-->
-      
-    <div class="row-flluid heading">
-        <div class="span12">
-          <h3>Resume</h3>
-            <p><a href="Resume_Brock_Donovan.docx"> Word</a></p>
-            <p><a href="Resume_Brock_Donovan.pdf"> PDF </a></p>
-        </div>
-    </div>  
-    <br>
-    <div class="row-fluid">
-      <div class="span12">
-          <div class="resume-body">
-            <p>
-              <b>EDUCATION:</b>
-              University of Illinois Champaign-Urbana B.S. Electrical Engineering May 2008
-            </p>
-            <div class="resume-body" style="font-size=10px"><p>
-              <b>SKILLS</b>
-                <p>Databases: PostgreSQL, MySQL Redshift, Vertica</p>                        
-                <p>Other: Google Analytics</p>
-                <p>Programming: Python, R, SQL, HTML, CSS </p>                              
-                <p>Big Data: Apache stack</p>
-            </p></div>
-            <p><b>EXPERIENCE</b></p>
-            <br>
-            <p>
-              <b>Major League Soccer - Manager Analytics and Insights</b>
-            </p>
-            <p> April 2017 – Present</p>      
-            <p>            
-              Responsible for prioritizing data and insights as a key strategic asset for building fan 
-              relationships and driving value from digital content. Work with internal stakeholders, clubs and 
-              partners to facilitate the use of data and analysis to make informed operational decisions. 
-              <ul>
-                <li>Provide user behavior and content performance insights. </li>
-                <li>Create data and reporting standards, shift from institutional knowledge to data-driven.</li>
-                <li>Work with content, video and social teams to create unified data source for reporting.</li>
-              </ul>
-            </p>
-            <p>
-              <b>Orchard Platform – Data Analyst </b>
-            </p>                                                 
-            <p>March 2016 – April 2017</p>
-            <p>
-               Orchard is a leading provider of tech and analytics to the marketplace lending Industry. 
-              <ul>
-                <li>Lead user interaction analysis using Google Analytics. Provide insights into client interactions with platform to executive team.</li>
-                <li>Design and build system for creating, databasing, and automating client reports.</li> 
-                <li>Create internal tools using Shiny & Flask to share insights and enable client services, sales, marketing and data science teams to monitor and investigate data.</li>
-              </ul> 
-            </p>
-            <p>
-              <b>Organizing for Action - Digital Analytics Manager</b>
-            </p>                   
-            <p>October 2013 – March 2016</p>
-            <p>
-              OFA is a nonprofit 501c4 that advocates for the agenda of President Barack Obama. OFA maintains his digital resources: www.barackobama.com, @barackobama, email list, etc.
-            </p>
-            <ul>
-              <li>Harness data insights for social media accounts that reach over 65 million people and an email list of millions of supporters. </li>
-              <li>Lead A/B testing efforts. Monitor & report on website activity and campaign performance.</li>
-              <li>Support all teams across company with data analysis & customized reporting.</li>
-            </ul>
-            Previously: Analytics Engineer
-            <ul>
-            <li>Automate reporting using Python, R, SQL (MySQL, PostgreSQL, Amazon Redshift).</li>
-            </ul>
-          </p>
-          <br>  
-          <p><b>Presenter – Analyst Institute Yearly Conference 2015 </b></p>
-            <ul>
-              <li>Presented design and results for Facebook Advertisement test which led to 15% increase in supporter donations.</li>
-            </ul>
-          <br>
-          <p><b>Geeks without Borders Hackathon Chicago 2013</b></p>
-          <ul>
-            <li>Member of winning team of 10 technical and non-technical participants who created a single data platform and user interface for the Greater Red Cross of Chicago.</li>
-          </ul>
-          <p>
-            <b>University of Illinois at Chicago - Graduate appointment UIC - School of Public Health </b>
-          </p>
-          <p>Aug 2012 – Aug 2013</p>
-          <ul>
-            <li>Data analysis & visualization creation using R. Results published in PLOS ONE</li>
-          </ul>
-          <br>
-          <p>
-            <b>Motorola Solutions Inc. - Senior Systems Engineer</b>
-          </p>
-          <p>Oct 2008 – Aug 2012</p>
-          <ul>
-            <li>Implemented software and hardware upgrades to multimillion-dollar digital radio systems.</li>
-          </ul>
+    <div class="resume-container">
+      <div class="resume-header">
+        <h1>Brock Donovan</h1>
+        <div class="subtitle">Data Direct Engineering Lead</div>
+        <div class="contact">
+          Pacifica, CA | (847)-309-2192 | brockdonovan@gmail.com<br>
+          <a href="https://www.linkedin.com/in/brock-donovan-6054a525/">LinkedIn</a> | <a href="https://github.com/docbronovan">GitHub</a>
         </div>
       </div>
-    </div>  
-<div class="row-fluid footer">
-    <div class="span12" style="padding-top: 30%;">
-      <div> 
-      <p>brockdonovan@gmail.com | <a href="https://twitter.com/docbronovan">@docbronovan</a>
-      </div>
-    </div>  
-  </div>
 
+      <div class="download-links">
+        <a href="Resume_Brock_Donovan.pdf">Download PDF</a>
+      </div>
+
+      <div class="resume-section">
+        <h2>Skills & Education</h2>
+        <dl class="skills-grid">
+          <dt>Education</dt>
+          <dd>University of Illinois Champaign-Urbana, B.S. Electrical Engineering, May 2008</dd>
+          <dt>Programming</dt>
+          <dd>Python, SQL, Bash</dd>
+          <dt>Infrastructure</dt>
+          <dd>Airflow, Docker, GCP, CI/CD (GitHub Actions, Harness)</dd>
+          <dt>Databases</dt>
+          <dd>Snowflake, BigQuery, PySpark, Databricks, DBT, Postgres, MSSQL</dd>
+          <dt>Data Viz</dt>
+          <dd>Tableau, Looker, Plotly, Seaborn, Matplotlib</dd>
+        </dl>
+      </div>
+
+      <div class="resume-section">
+        <h2>Experience</h2>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Data Direct Engineering Lead</span>
+            <span class="job-date">July 2021 - Present</span>
+          </div>
+          <div class="job-company">dv01</div>
+          <p class="job-description">
+            dv01 is a financial technology data management, reporting & analytics platform offering loan-level transparency and insight into lending markets.
+          </p>
+          <ul>
+            <li>Lead inter-departmental team for <a href="http://dv01.co/offerings/data-direct">Data Direct</a> product line</li>
+            <li>Manage team of 4</li>
+            <li>Design and maintain data feeds for some of the largest banks and hedge funds in the world</li>
+            <li>Manage costs of cloud infrastructure (decreased cost by 24%)</li>
+            <li>Plan and lead data product feature rollouts: Snowflake implementation & cloud sharing, maintain feature parity with web app and work with sales team on product pricing and support</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Senior Data Engineer</span>
+            <span class="job-date">July 2020 - July 2021</span>
+          </div>
+          <div class="job-company">dv01</div>
+          <ul>
+            <li>Work with data pipeline and business teams to plan, scope, and develop new, scalable features</li>
+            <li>Lead product migration from MSSQL Server to BigQuery</li>
+            <li>Decrease pipeline write time by 40% by leveraging BigQuery and Python</li>
+            <li>Provide technical leadership to junior engineers and new hires</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Data Engineer</span>
+            <span class="job-date">July 2019 - July 2020</span>
+          </div>
+          <div class="job-company">dv01</div>
+          <ul>
+            <li>Evolve the Data offering from one-off custom build to a full product that meets any client's needs</li>
+            <li>Build and maintain data pipelines including Airflow DAGs, Jenkins jobs, & automated testing</li>
+            <li>Lead client meetings, on call and support. Create documentation and marketing from scratch</li>
+            <li>Work with consultants to improve our product</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Manager, Analytics and Insights</span>
+            <span class="job-date">April 2017 - July 2019</span>
+          </div>
+          <div class="job-company">Major League Soccer</div>
+          <ul>
+            <li>Create data pipeline which in turn powered Tableau insights dashboards and ad hoc user and content analysis</li>
+            <li>Work with sales and marketing teams to enable data-driven decision making</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Data Analyst</span>
+            <span class="job-date">March 2016 - April 2017</span>
+          </div>
+          <div class="job-company">Orchard Platform</div>
+          <p class="job-description">
+            Orchard was a provider of tech and analytics to the marketplace lending industry.
+          </p>
+          <ul>
+            <li>Create both client reports and internal tools using Shiny & Flask to share insights and enable client services, sales, marketing and data science teams to monitor and investigate data</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Digital Analytics Manager</span>
+            <span class="job-date">October 2013 - March 2016</span>
+          </div>
+          <div class="job-company">Organizing for Action</div>
+          <p class="job-description">
+            OFA is a nonprofit 501c4 that advocates for the agenda of President Barack Obama. OFA maintains his digital resources: barackobama.com, @barackobama, email list, etc.
+          </p>
+          <ul>
+            <li>Harness data insights for social media accounts that reach over 65 million people and an email list of millions of supporters</li>
+            <li>Monitor & report on website activity and campaign performance</li>
+          </ul>
+          <p style="font-size: 14px; margin-top: 10px;"><strong>Presenter</strong> - Analytics Institute Yearly Conference 2015</p>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Graduate Appointment</span>
+            <span class="job-date">Aug 2012 - Aug 2013</span>
+          </div>
+          <div class="job-company">University of Illinois at Chicago - School of Public Health</div>
+          <ul>
+            <li>Data analysis & visualization for School of Public Health. Results published in <a href="https://journals.plos.org/plosone/">PLOS ONE</a></li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Senior Systems Engineer</span>
+            <span class="job-date">Oct 2008 - Aug 2012</span>
+          </div>
+          <div class="job-company">Motorola Solutions Inc.</div>
+          <ul>
+            <li>Implemented software and hardware upgrades to multimillion-dollar digital radio systems</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row-fluid footer" style="padding-top: 40px;">
+      <div class="span12">
+        <p>brockdonovan@gmail.com</p>
+      </div>
+    </div>
+
+<script src="js/themes.js"></script>
 </body>
-</head>
 </html>
 
 
