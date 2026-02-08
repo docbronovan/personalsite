@@ -29,8 +29,8 @@ body.theme-geocities .navbar-inverse {
 }
 body.theme-geocities .navbar-inverse .brand,
 body.theme-geocities .navbar-inverse .nav > li > a {
-  color: #000000 !important;
-  text-shadow: 2px 2px #ff0000;
+  color: #9900ff !important;
+  text-shadow: 2px 2px #000000;
   font-weight: bold !important;
 }
 body.theme-geocities .container {
@@ -88,6 +88,33 @@ body.theme-geocities .heading h3::before {
 body.theme-geocities .heading h3::after {
   content: " **";
   color: #ff00ff;
+}
+/* Geocities resume page - white text */
+body.theme-geocities .resume-container {
+  background-color: #000080;
+  border: 5px dashed #ff00ff;
+}
+body.theme-geocities .resume-header h1 {
+  color: #ffff00 !important;
+  text-shadow: 2px 2px #ff0000;
+}
+body.theme-geocities .resume-header .subtitle,
+body.theme-geocities .resume-header .contact,
+body.theme-geocities .job-title,
+body.theme-geocities .job-company,
+body.theme-geocities .job-date,
+body.theme-geocities .job-location,
+body.theme-geocities .job-description,
+body.theme-geocities .skills-grid dt,
+body.theme-geocities .skills-grid dd,
+body.theme-geocities .education-item .degree,
+body.theme-geocities .education-item .school,
+body.theme-geocities .education-item .year,
+body.theme-geocities .resume-section h2 {
+  color: #ffffff !important;
+}
+body.theme-geocities .resume-section h2 {
+  border-bottom-color: #ff00ff !important;
 }
 
 /* ========== FLASH THEME (2000s) ========== */
@@ -174,4 +201,8 @@ body.theme-flash .heading h3 {
 @keyframes glow {
   from { text-shadow: 0 0 5px rgba(100, 100, 255, 0.5); }
   to { text-shadow: 0 0 20px rgba(100, 100, 255, 0.8), 0 0 30px rgba(100, 100, 255, 0.6); }
+}
+/* Flash theme resume page - extra top padding */
+body.theme-flash .resume-container {
+  margin-top: 20px;
 }
