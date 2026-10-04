@@ -1,83 +1,65 @@
-# dev.brockdonovan.com setup (one-time, manual)
+# dev.brockdonovan.com setup
 
-This repo is currently served by GitHub Pages from `master`, with DNS for
-`brockdonovan.com` at Justhost pointing to GitHub's IPs. To get a working
-dev preview at `dev.brockdonovan.com` that tracks the `add-dev` branch, this
-repo is moving to Cloudflare Pages (chosen for native per-branch preview
-domains). The steps below are dashboard/registrar actions nobody but you can
-do — I don't have access to your Cloudflare or Justhost accounts.
+This repo was on GitHub Pages, served from `master`, with DNS for
+`brockdonovan.com` at Justhost pointing at GitHub's IPs. It's moving to
+Cloudflare for native branch previews.
 
-The `.github/workflows/cloudflare-pages.yml` workflow in this repo already
-does its part: on every push to `master` or `add-dev` it deploys this repo's
-files to a Cloudflare Pages project named `personalsite`. It needs the steps
-below done first, or the Action will fail on `apiToken`/`accountId`.
+Cloudflare has been folding **Pages into the Workers platform**. Creating a
+project via the dashboard's "Pages > Upload assets" flow actually provisions
+a **Worker with static assets**, not a classic Pages project (confirmed by
+wrangler itself refusing to deploy to it as a Pages project). So this repo
+deploys as two such Workers instead of one Pages project with environments:
 
-## 1. Cloudflare account + zone
+| Branch    | Worker name        | Domain                  |
+|-----------|---------------------|--------------------------|
+| `master`  | `personalsite`      | `brockdonovan.com`, `www.brockdonovan.com` |
+| `add-dev` | `personalsite-dev`  | `dev.brockdonovan.com`  |
 
-1. Sign up at https://dash.cloudflare.com (free plan).
-2. Add `brockdonovan.com` as a site. Cloudflare scans existing DNS and shows
-   you the records it found (there's no email/MX on this domain today, so
-   this should just be the apex `A` records and `www` CNAME to GitHub Pages).
-3. Cloudflare gives you two nameservers (e.g. `xxx.ns.cloudflare.com`). At
-   Justhost/Bluehost's domain panel, replace `NS1.JUSTHOST.COM` /
-   `NS2.JUSTHOST.COM` with those two. Propagation is usually under an hour,
-   can take up to 24h. **Site stays up on GitHub Pages during this** — don't
-   change the A/CNAME records yet.
+`.github/workflows/cloudflare-deploy.yml` deploys on every push to either
+branch, using `wrangler.toml` (static-assets config, `directory = "."`) and
+`.assetsignore` (keeps `.git`, `.github`, and the wrangler-action's own
+`node_modules` install out of the uploaded assets).
 
-## 2. Cloudflare Pages project (direct upload)
+## Status
 
-1. Dashboard > Workers & Pages > Create > Pages > **Upload assets** (not
-   "Connect to Git" — the GitHub Action does the deploying, so we don't want
-   Cloudflare's own Git integration double-deploying).
-2. Name the project `personalsite` (must match `projectName` in the workflow
-   file).
-3. Skip the initial manual upload prompt if offered — the Action will push
-   the first real deploy.
+- [x] Cloudflare account created, `brockdonovan.com` zone added, nameservers
+      switched from Justhost to Cloudflare (`sofia`/`rommy.ns.cloudflare.com`)
+      — zone active.
+- [x] `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repo secrets added.
+- [x] `add-dev` push deploys clean to Worker `personalsite-dev`, confirmed
+      live at `https://personalsite-dev.brockdonovan.workers.dev/`.
+- [ ] Custom domain `dev.brockdonovan.com` attached to `personalsite-dev`.
+- [ ] `master` merged/pushed with this same workflow, confirmed deploying
+      clean to Worker `personalsite`.
+- [ ] Custom domains `brockdonovan.com` / `www.brockdonovan.com` attached to
+      `personalsite` (this is the actual prod cutover — do this deliberately,
+      not as a side effect of an unrelated push).
+- [ ] Old GitHub Pages site disabled (repo Settings > Pages) once the above
+      is confirmed working, and the now-unused `CNAME` file removed.
 
-## 3. API token + repo secrets
+## Remaining manual steps
 
-1. Dashboard > My Profile > API Tokens > Create Token > **Edit Cloudflare
-   Workers** template (covers Pages) scoped to your account, or a custom
-   token with `Account.Cloudflare Pages: Edit`.
-2. Copy your Account ID (shown on the right side of any zone's Overview page
-   or Workers & Pages home).
-3. In GitHub: repo Settings > Secrets and variables > Actions, add:
-   - `CLOUDFLARE_API_TOKEN`
-   - `CLOUDFLARE_ACCOUNT_ID`
+### Attach dev.brockdonovan.com (safe to do now)
 
-## 4. Push and verify preview deploys
+Dashboard > Workers & Pages > `personalsite-dev` > **Settings** > **Domains &
+Routes** > **Add** > **Custom Domain** > enter `dev.brockdonovan.com` > Add.
+Cloudflare creates the DNS record itself since the zone is already here.
+Give it a minute, then check `https://dev.brockdonovan.com`.
 
-1. Push a commit to `add-dev` (or push this branch as-is). The Action should
-   run and create a deployment in the Pages project, reachable at an
-   auto-generated URL like `add-dev.personalsite.pages.dev`.
-2. Push/merge to `master` the same way — it becomes the **production**
-   deployment for the same project.
+### Cut prod over (do deliberately, this is the live site)
 
-## 5. Wire up the actual domains
+1. Merge/push `add-dev`'s workflow + `wrangler.toml` + `.assetsignore` to
+   `master` so pushes there start deploying the `personalsite` Worker.
+2. Confirm that deploy succeeded and `https://personalsite.workers.dev`
+   (or whatever subdomain Cloudflare assigns it) actually looks right.
+3. Only then: `personalsite` > Settings > Domains & Routes > add
+   `brockdonovan.com` and `www.brockdonovan.com`. This is the moment the
+   live site switches from GitHub Pages to this Worker.
+4. Once confirmed, disable GitHub Pages (repo Settings > Pages) and delete
+   the `CNAME` file in a follow-up commit.
 
-In the Pages project > Custom domains:
-- Add `brockdonovan.com` and `www.brockdonovan.com`, both mapped to the
-  **Production** environment (i.e. `master`).
-- Add `dev.brockdonovan.com` under the **Preview** section, scoped to the
-  `add-dev` branch specifically (Cloudflare lets you pick "this branch only"
-  rather than all preview deploys).
+## Day-to-day workflow once this is fully wired up
 
-Cloudflare auto-creates the matching DNS records in your now-Cloudflare-
-managed zone — you don't need to hand-add CNAMEs for this part.
-
-## 6. Cut over and clean up
-
-Once `brockdonovan.com` is confirmed loading from Cloudflare Pages:
-1. GitHub repo Settings > Pages > disable the Pages site (stops the old
-   deployment; also frees up the custom domain so Cloudflare's cert
-   validation doesn't conflict with it).
-2. The `CNAME` file in this repo was for GitHub Pages' custom-domain config
-   and is no longer needed — fine to delete in a follow-up commit once step 1
-   above is done.
-
-## Day-to-day workflow after this is done
-
-- Branch off `add-dev` (or push directly to `add-dev`) for work-in-progress,
-  push it up, check `https://dev.brockdonovan.com`.
-- Merge `add-dev` into `master` (or open a PR) when it looks right — that
-  push triggers the production deploy to `https://brockdonovan.com`.
+- Work on `add-dev` (or branch off it), push, check `https://dev.brockdonovan.com`.
+- Merge `add-dev` into `master` when it looks right — that push deploys to
+  `https://brockdonovan.com`.
