@@ -1,0 +1,36 @@
+name: Deploy to Cloudflare Pages
+
+# Prod (master) -> brockdonovan.com
+# add-dev        -> dev.brockdonovan.com (mapped to this branch's preview deploy in the
+#                    Cloudflare Pages dashboard: Settings > Custom domains > Preview)
+#
+# One-time setup required before this workflow will succeed, see README-dev-setup.md:
+#   - Create a Cloudflare Pages project named "personalsite" (direct-upload, not git-connected)
+#   - Add repo secrets: CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID
+
+on:
+  push:
+    branches:
+      - master
+      - add-dev
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: personalsite
+          directory: .
+          branch: ${{ github.ref_name }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
