@@ -1,0 +1,46 @@
+name: Deploy to Cloudflare Workers (static assets)
+
+# Cloudflare has folded Pages into the Workers platform, so this site deploys as a
+# static-assets Worker (see wrangler.toml) rather than a classic Pages project.
+#
+# master  -> Worker "personalsite"     -> custom domains brockdonovan.com / www
+# add-dev -> Worker "personalsite-dev" -> custom domain dev.brockdonovan.com
+#
+# One-time setup required before this workflow will succeed, see README-dev-setup.md:
+#   - Add repo secrets: CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID
+#   - In the Cloudflare dashboard, attach the custom domains above to each Worker
+#     (Workers & Pages > <worker> > Settings > Domains & Routes)
+
+on:
+  push:
+    branches:
+      - master
+      - add-dev
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pick Worker name for this branch
+        id: vars
+        run: |
+          if [ "${{ github.ref_name }}" = "master" ]; then
+            echo "worker_name=personalsite" >> "$GITHUB_OUTPUT"
+          else
+            echo "worker_name=personalsite-dev" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: deploy --name ${{ steps.vars.outputs.worker_name }}
