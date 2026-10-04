@@ -5,3 +5,6 @@
 wrangler.toml
 .assetsignore
 README-dev-setup.md
+node_modules
+package.json
+package-lock.json
