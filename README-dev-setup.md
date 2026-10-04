@@ -28,7 +28,8 @@ branch, using `wrangler.toml` (static-assets config, `directory = "."`) and
 - [x] `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` repo secrets added.
 - [x] `add-dev` push deploys clean to Worker `personalsite-dev`, confirmed
       live at `https://personalsite-dev.brockdonovan.workers.dev/`.
-- [ ] Custom domain `dev.brockdonovan.com` attached to `personalsite-dev`.
+- [x] Custom domain `dev.brockdonovan.com` attached to `personalsite-dev`
+      (Production), confirmed loading in browser.
 - [ ] `master` merged/pushed with this same workflow, confirmed deploying
       clean to Worker `personalsite`.
 - [ ] Custom domains `brockdonovan.com` / `www.brockdonovan.com` attached to
